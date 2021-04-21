@@ -1,0 +1,9 @@
+body {
+  overflow: unset !important;
+  margin: 0;
+  padding: 0 !important;
+}
+
+.calendericon {
+  width: 14.4px;
+}
