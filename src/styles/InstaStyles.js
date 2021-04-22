@@ -2,12 +2,14 @@ import { makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(() => ({
   root: {
-    padding: "83px 226px 0",
+    padding: "83px 0 0",
     textAlign: "center",
+    width: "1924px",
+    margin: "0 auto",
   },
   textContainer: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     marginBottom: "45px",
   },
   line: {

@@ -2,17 +2,19 @@ import { makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles(() => ({
   root: {
-    padding: "84px 226px 0",
+    padding: "84px 0 0",
     textAlign: "center",
     backgroundColor: "#F9F9F9",
+    width: "1924px",
+    margin: "0 auto",
   },
   textContainer: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     marginBottom: "35px",
   },
   line: {
-    width: "661px",
+    width: "640px",
     height: "1px",
     lineHeight: "1px",
     backgroundColor: "#D3D0D0",
@@ -66,9 +68,8 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#242424",
     display: "flex",
     height: "179px",
-    margin: "0 -226px",
     justifyContent: "space-between",
-    padding: "47px 100px 0",
+    padding: "47px 226px 0",
   },
   logoDiv: {
     display: "flex",

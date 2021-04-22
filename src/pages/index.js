@@ -6,12 +6,12 @@ import Layout from "../components/Layout"
 
 export default function Home() {
   return (
-    <div style={{ width: '1924px', margin: '0 auto' }}>
-    <Layout>
-      <HomeHero />
-      <Events />
-      <Insta />
-    </Layout>
+    <div style={{ width: "1924px", margin: "0 auto" }}>
+      <Layout>
+        <HomeHero />
+        <Events />
+        <Insta />
+      </Layout>
     </div>
   )
 }

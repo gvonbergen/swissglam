@@ -96,7 +96,7 @@ const Header = props => {
               indicatorColor="secondary"
               TabIndicatorProps={{
                 style: {
-                  height: "1px",
+                  height: "2px",
                   color: "#000000",
                 },
               }}
