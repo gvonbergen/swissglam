@@ -43,6 +43,10 @@ const useStyles = makeStyles(() => ({
   calander: {
     width: "14.4px",
   },
+  img: {
+    width: "220px",
+    height: "190px",
+  },
   eventBtn: {
     width: "239px",
     border: "1px solid black !important",

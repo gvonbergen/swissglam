@@ -1,13 +1,56 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import moment from "moment"
 import useStyles from "../styles/EventsStyles"
-import e1 from "../assets/imgs/e1.png"
-import e2 from "../assets/imgs/e2.png"
-import e3 from "../assets/imgs/e3.png"
 import calander from "../assets/imgs/calander.svg"
 import location from "../assets/imgs/location.svg"
 import { Button } from "@material-ui/core"
 
+const LatestEvents = graphql`
+  query {
+    allWpEvent {
+      edges {
+        node {
+          slug
+          title
+          excerpt
+          content
+          startDate
+          endDate
+          featuredImage {
+            node {
+              sourceUrl
+              mediaDetails {
+                sizes {
+                  sourceUrl
+                }
+              }
+            }
+          }
+          eventsCategories {
+            nodes {
+              name
+            }
+          }
+          organizers {
+            nodes {
+              title
+            }
+          }
+          venue {
+            city
+          }
+        }
+      }
+    }
+  }
+`
+
 const Events = () => {
+  const eventsQuery = useStaticQuery(LatestEvents)
+  const firstEvent = eventsQuery.allWpEvent.edges[0]
+  const secondEvent = eventsQuery.allWpEvent.edges[1]
+  const thirdEvent = eventsQuery.allWpEvent.edges[2]
   const classes = useStyles()
 
   return (
@@ -19,50 +62,70 @@ const Events = () => {
       </div>
       <div className={classes.events}>
         <div className={classes.flexRow}>
-          <img src={e1} alt="e1" className={classes.img} />
+          <img
+            src={firstEvent.node.featuredImage.node.sourceUrl}
+            alt="e1"
+            className={classes.img}
+          />
           <div className={classes.flexCol}>
-            <div className={classes.heading}>
-              Zermatt Unplugged 2021 Music Festival
-            </div>
+            <div className={classes.heading}>{firstEvent.node.title}</div>
             <div className={classes.flexRowInner}>
               <img src={calander} alt="calander" className={classes.calander} />
-              <div className={classes.date}>July 2 - July 17</div>
-            </div>
-            <div className={classes.flexRowInner}>
-              <img src={location} alt="location" />
-              <div className={classes.location}>Zermatt</div>
-            </div>
-          </div>
-        </div>
-        <div className={classes.flexRow}>
-          <img src={e2} alt="e2" className={classes.img} />
-          <div className={classes.flexCol}>
-            <div className={classes.heading}>Montreux Jazz Festival 2021</div>
-            <div className={classes.flexRowInner}>
-              <img src={calander} alt="calander" className={classes.calander} />
-              <div className={classes.date}>July 2</div>
+              <div className={classes.date}>
+                {moment(firstEvent.node.startDate).format("MMM DD")} -{" "}
+                {moment(firstEvent.node.endDate).format("MMM DD")}
+              </div>
             </div>
             <div className={classes.flexRowInner}>
               <img src={location} alt="location" />
               <div className={classes.location}>
-                Montreux Music & Convention Center
+                {firstEvent.node.venue.city}
               </div>
             </div>
           </div>
         </div>
         <div className={classes.flexRow}>
-          <img src={e3} alt="e3" className={classes.img} />
+          <img
+            src={secondEvent.node.featuredImage.node.sourceUrl}
+            alt="e2"
+            className={classes.img}
+          />
           <div className={classes.flexCol}>
-            <div className={classes.heading}>
-              Zermatt Unplugged 2021 Music Festival
-            </div>
+            <div className={classes.heading}>{secondEvent.node.title}</div>
             <div className={classes.flexRowInner}>
               <img src={calander} alt="calander" className={classes.calander} />
-              <div className={classes.date}>August 25</div>
+              <div className={classes.date}>
+                {moment(secondEvent.node.startDate).format("MMM DD")} -{" "}
+                {moment(secondEvent.node.endDate).format("MMM DD")}
+              </div>
             </div>
             <div className={classes.flexRowInner}>
               <img src={location} alt="location" />
-              <div className={classes.location}>Olten</div>
+              <div className={classes.location}>
+                {secondEvent.node.venue.city}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={classes.flexRow}>
+          <img
+            src={thirdEvent.node.featuredImage.node.sourceUrl}
+            alt="e3"
+            className={classes.img}
+          />
+          <div className={classes.flexCol}>
+            <div className={classes.heading}>{thirdEvent.node.title}</div>
+            <div className={classes.flexRowInner}>
+              <img src={calander} alt="calander" className={classes.calander} />
+              <div className={classes.date}>
+                {moment(thirdEvent.node.startDate).format("MMM DD")}
+              </div>
+            </div>
+            <div className={classes.flexRowInner}>
+              <img src={location} alt="location" />
+              <div className={classes.location}>
+                {thirdEvent.node.venue.city}
+              </div>
             </div>
           </div>
         </div>
